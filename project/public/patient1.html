@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Predictor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .result{
+            color: black;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Disease Predictor</h1>
+        <form method="POST" action="/predict">
+            <div class="form-group">
+                <label for="symptoms">Enter Symptoms</label>
+                <input type="text" class="form-control" id="symptoms" name="symptoms" placeholder="e.g., cough, fever">
+            </div>
+            <button type="submit" class="result"><a href="/result.html">Predict</a></button>
+        </form>
+    </div>
+</body>
+</html>

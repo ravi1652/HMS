@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical History Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="radio"],
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group button:disabled {
+            background-color: #ccc;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navigation button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .navigation button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Medical History Form</h1>
+        <form id="medical-form">
+            <div class="form-page" id="page-1">
+                <div class="form-group">
+                    <label for="first-name">1. Full name</label>
+                    <input type="text" id="first-name" placeholder="First Name" required>
+                    <input type="text" id="last-name" placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">2. Age</label>
+                    <input type="number" id="age" placeholder="Enter your age" required>
+                </div>
+            </div>
+
+            <div class="form-page" id="page-2" style="display: none;">
+                <div class="form-group">
+                    <label>3. What is your gender?</label>
+                    <input type="radio" id="male" name="gender" value="Male" required> Male
+                    <input type="radio" id="female" name="gender" value="Female"> Female
+                    <input type="radio" id="na" name="gender" value="N/A"> N/A
+                </div>
+                <div class="form-group">
+                    <label for="phone-number">4. Phone number</label>
+                    <input type="text" id="phone-number" placeholder="Enter your phone number" required>
+                </div>
+            </div>
+
+            <div class="form-page" id="page-3" style="display: none;">
+                <div class="form-group">
+                    <label for="email">5. Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label>6. Check the conditions that apply to you or any member of your immediate relatives:</label>
+                    <select id="gender" class="gender-select" aria-label="Select Gender">
+                        <option value="">Select</option>
+                        <option value="male">Fever</option>
+                        <option value="female">Asthama</option>
+                        <option value="other">Cold</option>
+                        <option value="other">Cough</option>
+                        <option value="other">Headache</option>
+                      </select><br><br>
+                    <input type="text" id="condition-2" placeholder="other"> 
+                </div>
+            </div>
+
+            <div class="form-page" id="page-4" style="display: none;">
+                <div class="form-group">
+                    <label>7. Are you currently taking any medication?</label>
+                    <input type="radio" id="medication-yes" name="medication" value="Yes"> Yes
+                    <input type="radio" id="medication-no" name="medication" value="No"> No
+                </div>
+                <div class="form-group">
+                    <label>8. Do you have any medication allergies?</label>
+                    <input type="radio" id="allergy-yes" name="allergy" value="Yes"> Yes
+                    <input type="radio" id="allergy-no" name="allergy" value="No"> No
+                </div>
+            </div>
+
+            <div class="form-page" id="page-5" style="display: none;">
+                <div class="form-group">
+                    <label>9. Do you use any kind of tobacco or have you ever used them?</label>
+                    <input type="radio" id="tobacco-yes" name="tobacco" value="Yes"> Yes
+                    <input type="radio" id="tobacco-no" name="tobacco" value="No"> No
+                </div>
+                <div class="form-group">
+                    <label>10. Do you use any kind of illegal drugs or have you ever used them?</label>
+                    <input type="radio" id="drugs-yes" name="drugs" value="Yes"> Yes
+                    <input type="radio" id="drugs-no" name="drugs" value="No"> No
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button type="button" id="prev-button" onclick="prevPage()" disabled>Previous</button>
+                <button type="button" id="next-button" onclick="nextPage()">Next</button>
+                <button href="#" id="submit-button" style="display: none;"><a href="/images/thankyou.png">Submit</a></button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 5;
+
+        function showPage(page) {
+            document.querySelectorAll('.form-page').forEach((formPage, index) => {
+                formPage.style.display = (index + 1 === page) ? 'block' : 'none';
+            });
+
+            document.getElementById('prev-button').disabled = (page === 1);
+            document.getElementById('next-button').style.display = (page === totalPages) ? 'none' : 'inline-block';
+            document.getElementById('submit-button').style.display = (page === totalPages) ? 'inline-block' : 'none';
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        showPage(currentPage);
+    </script>
+</body>
+</html>

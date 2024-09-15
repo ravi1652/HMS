@@ -1,0 +1,14 @@
+-- Create a table for diseases
+CREATE TABLE Disease (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    symptoms TEXT NOT NULL,
+    medicine TEXT,
+    curable BOOLEAN NOT NULL
+);
+
+-- Insert some example data
+INSERT INTO Disease (name, symptoms, medicine, curable) VALUES 
+('Common Cold', 'cough,sneezing,runny nose', 'Paracetamol', 1),
+('Diabetes', 'frequent urination,thirst,fatigue', 'Metformin', 0),
+('Cancer', 'unexplained weight loss,fever,fatigue', NULL, 0);

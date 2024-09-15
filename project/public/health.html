@@ -1,0 +1,384 @@
+<!-- <style>
+    .patient-registration-container {
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .registration-content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 1024px;
+      width: 100%;
+      align-items: center;
+      padding: 141px 80px 0;
+    }
+    
+    @media (max-width: 991px) {
+      .registration-content {
+        max-width: 100%;
+        padding: 100px 20px 0;
+      }
+    }
+    
+    .background-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .registration-form-container {
+      position: relative;
+      display: flex;
+      width: 100%;
+      max-width: 1058px;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    @media (max-width: 991px) {
+      .registration-form-container {
+        max-width: 100%;
+      }
+    }
+    
+    .registration-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 100px;
+      max-width: 100%;
+    }
+    
+    .registration-title {
+      color: #000;
+      margin: 27px 0 0 14px;
+      font: 600 38px Outfit, sans-serif;
+    }
+    
+    .registration-form {
+      background-color: rgba(217, 217, 217, 0.6);
+      align-self: stretch;
+      display: flex;
+      margin-top: 59px;
+      width: 100%;
+      flex-direction: column;
+      padding: 33px 26px 0;
+    }
+    
+    @media (max-width: 991px) {
+      .registration-form {
+        max-width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+      }
+    }
+    
+    .register-section {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 253px;
+      margin-left: 11px;
+      width: 987px;
+      max-width: 100%;
+      align-items: center;
+      color: #000;
+      white-space: nowrap;
+      justify-content: center;
+      padding: 50px 80px;
+      font: 600 38px Outfit, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .register-section {
+        white-space: initial;
+        padding: 0 20px;
+      }
+    }
+    
+    .register-icon-wrapper {
+      position: relative;
+      display: flex;
+      margin-left: 13px;
+      width: 144px;
+      max-width: 100%;
+      flex-direction: column;
+    }
+    
+    @media (max-width: 991px) {
+      .register-icon-wrapper {
+        white-space: initial;
+      }
+    }
+    
+    .register-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 100px;
+      margin-left: 10px;
+      max-width: 100%;
+    }
+    
+    .register-text {
+      margin-top: 6px;
+    }
+    
+    .patient-history-section {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 241px;
+      width: 987px;
+      max-width: 100%;
+      align-items: center;
+      color: #000;
+      margin: 27px 0 0 11px;
+      padding: 65px 80px 26px;
+      font: 600 38px Outfit, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .patient-history-section {
+        padding: 0 20px;
+      }
+    }
+    
+    .patient-history-icon-wrapper {
+      position: relative;
+      display: flex;
+      margin-left: 28px;
+      width: 337px;
+      max-width: 100%;
+      flex-direction: column;
+    }
+    
+    .patient-history-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 100px;
+      align-self: center;
+      max-width: 100%;
+    }
+    
+    .form-actions {
+      display: flex;
+      margin-top: 41px;
+      gap: 26px;
+      flex-wrap: wrap;
+    }
+    
+    @media (max-width: 991px) {
+      .form-actions {
+        margin: 40px 10px 0 0;
+      }
+    }
+    
+    .action-button {
+      aspect-ratio: 8.77;
+      object-fit: contain;
+      object-position: center;
+      width: fit-content;
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .action-button {
+        max-width: 100%;
+      }
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    </style> -->
+    
+    <!-- <section class="patient-registration-container">
+      <div class="registration-content">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7e9279db9b09a66772ceb476484f3f1e87aafec4e446cb06fc703ce4a32e3768?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="" class="background-image" />
+        <div class="registration-form-container">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1608434ee9731472756a4712818224111528d85b8957d812fae7448b08b82c0?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Patient Registration Icon" class="registration-icon" />
+          <h1 class="registration-title">Patient Registration</h1>
+          <form class="registration-form">
+            <div class="register-section">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6fe832627be64936c213047f676a54afb40a4b70eea9ca7de615a76723f2be41?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="" class="background-image" />
+              <div class="register-icon-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/158d2becd4274f7cb3f3d8375f740dc265e6d3c05fa7b7c5e67c5f549ce4d030?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Register Icon" class="register-icon" />
+                <button class="register-text">Register</button>
+              </div>
+            </div>
+            <div class="patient-history-section">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/048c7c715c72552a360fd9b7628f55c42d425966b3043868713712b6f4e5af63?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="" class="background-image" />
+              <div class="patient-history-icon-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/49dc4d5becb7cf961c89f847fa080652eca4b2cb34a1ecd0a64f6d7aeef7f0a6?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Patient History Icon" class="patient-history-icon" />
+                <button>Add Patient History</button>
+              </div>
+            </div>
+            <div class="form-actions">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/be3707210e29c99d0c1a4d26e4427281e21279eab712ab7793c14edfd778e0b8?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Action Button 1" class="action-button" />
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/acca75a352dac36c4272f68ff473cc0880006b7af29bf45257273d4c8aaa163e?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Action Button 2" class="action-button" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </section> -->
+
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background-image: url('https://cdn.builder.io/api/v1/image/assets/TEMP/7e9279db9b09a66772ceb476484f3f1e87aafec4e446cb06fc703ce4a32e3768?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a'); /* Use the appropriate image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .patient-registration-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .registration-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .registration-title {
+            color: #000;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .register-section,
+        .patient-history-section {
+            background-color: rgba(217, 217, 217, 0.6);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .register-section img,
+        .patient-history-section img {
+            width: 60px;
+            height: 60px;
+            margin-right: 20px;
+        }
+
+        .register-section button,
+        .patient-history-section button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .patient-registration-container {
+                max-width: 90%;
+                padding: 10px;
+            }
+
+            .registration-title {
+                font-size: 24px;
+            }
+
+            .register-section img,
+            .patient-history-section img {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+            }
+
+            .register-section button,
+            .patient-history-section button {
+                font-size: 20px;
+            }
+        }
+        .patient_history{
+          color: black;
+        }
+    </style>
+</head>
+<body>
+
+<section class="patient-registration-container">
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b1608434ee9731472756a4712818224111528d85b8957d812fae7448b08b82c0?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Patient Registration Icon" class="registration-icon">
+    <h1 class="registration-title">Patient Registration</h1>
+    <div class="registration-form">
+       <a href="/public/register.html"> <div class="register-section">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/158d2becd4274f7cb3f3d8375f740dc265e6d3c05fa7b7c5e67c5f549ce4d030?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Register Icon">
+            <button class="register-text">Register</button>
+        </div></a>
+        <a href="patienthistory.html">
+        <div class="patient-history-section">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/49dc4d5becb7cf961c89f847fa080652eca4b2cb34a1ecd0a64f6d7aeef7f0a6?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" alt="Patient History Icon">
+            <button class="patient_history">Add Patient History</button>
+        </div>
+      </a>
+      <a href="patient1.html">
+        <div class="patient-history-section">
+            <img src="/images/image.png" alt="Patient History Icon">
+            <button class="patient_history">Predictor</button>
+        </div>
+      </a>
+    </div>
+</section>
+
+</body>
+</html>
+
+

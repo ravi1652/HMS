@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('/images/\ patient.webp'); /* Replace with your image file */
+            background-size: cover; /* Ensures the image covers the entire background area */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            height: 100vh; /* Ensures the body takes the full height of the viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/\ patient.webp'); /* Replace with your image file */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(50%); /* Decreases the brightness of the background image */
+            z-index: -1; /* Ensures the background image stays behind the content */
+        }
+        
+
+        .content {
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        .doctor{
+            text-align: center;
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+            color: #fda085;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            border-color: #fda085;
+            outline: none;
+            box-shadow: 0 0 5px rgba(253, 160, 133, 0.5);
+        }
+
+        #sendOtp, #verifyOtp {
+            width: 100%;
+            padding: 10px;
+            background-color: #fda085;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #sendOtp:hover, #verifyOtp:hover {
+            background-color: #f6d365;
+        }
+
+        #otpSection {
+            margin-top: 20px;
+        }
+
+        #verifyOtp {
+            margin-top: 10px;
+        }
+
+        .container i {
+            margin-right: 10px;
+            color: #fda085;
+        }
+
+        .container h2 i {
+            font-size: 30px;
+            vertical-align: middle;
+        }
+
+        #sendOtp i, #verifyOtp i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body >
+
+    <div class="container">
+        <h2><i class="fas fa-sign-in-alt"></i> Patient</h2>
+        <div class="form-group">
+            <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+            <input type="email" id="email" placeholder="Enter your email">
+        </div>
+        <div class="form-group">
+            <label for="password"><i class="fas fa-lock"></i> Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        <button id="sendOtp"><i class="fas fa-paper-plane"></i> Send OTP</button>
+        <br><br>
+       <div class="doctor">
+                <a href="/public/doctor.html">DOCTOR ?</a>
+            </div>
+        <div class="form-group" id="otpSection" style="display: none;">
+            <label for="otp"><i class="fas fa-key"></i> OTP:</label>
+            <input type="text" id="otp" placeholder="Enter the OTP">
+            <button id="verifyOtp" onclick="redirectToPage()"><i class="fas fa-check"></i> Verify OTP and Continue</button>
+        </div>
+    </div>
+    <!-- <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h2 id="loginTitle">PATIENT LOGIN</h2>
+                <div class="country-flag">
+                    <img src="/images/Screenshot 2024-08-23 at 12.26.04 PM.png" alt="India Flag">
+                </div>
+            </div>
+
+            <div class="toggle-buttons">
+                <button id="emailBtn" class="toggle active">Email</button>
+                <button id="phoneBtn" class="toggle">Phone Number</button>
+            </div>
+
+            <div id="emailLogin" class="login-form">
+                <input type="email" placeholder="Email address">
+                <input type="password" placeholder="password">
+                <a href="#" class="forgot-password">Forgot Password?</a>
+                <button class="login-btn">Send OTP</button>
+                <input type="otp" placeholder="otp">
+                <button id="verifyOtp" onclick="redirectToPage()"><i class="fas fa-check"></i> Verify OTP and Continue</button>
+            </div>
+
+           
+
+            <div class="sign-up">
+                <p>Or sign up with</p>
+                <div class="google-signup">
+                    <img src="/images/pngwing.com.png" alt="Google"> Google
+                </div>
+                <p>Not registered yet? <a href="#">Create Account</a></p>
+            </div><br>
+            <div class="doctor">
+                <a href="/doctor.html">DOCTOR ?</a>
+            </div>
+        </div>
+    </div> -->
+   
+<script>
+        document.getElementById('sendOtp').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            fetch('http://localhost:3000/send-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('otpSection').style.display = 'block';
+                } else {
+                    alert('Error sending OTP');
+                }
+            });
+        });
+    
+        document.getElementById('verifyOtp').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp').value;
+            fetch('http://localhost:3000/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, otp })
+            }).then(response => {
+                if (response.ok) {
+                    alert('OTP Verified');
+                } else {
+                    alert('Invalid OTP');
+                }
+            });
+        });
+    
+        function redirectToPage(){
+            window.location.href='health.html';
+        }
+    </script>
+    <script src="server.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
