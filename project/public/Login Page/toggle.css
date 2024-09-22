@@ -1,0 +1,47 @@
+/* toggle.css */
+
+/* Container for login forms */
+.login-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Toggle buttons */
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.toggle {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #4B4B4B;
+    background-color: #E8E8E8;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.toggle.active {
+    background-color: #6200EA;
+    color: #FFFFFF;
+}
+
+/* Add margin to forms */
+.form-section {
+    padding: 20px;
+}
+
+/* Sign-up link */
+.sign-up {
+    text-align: center;
+    margin-top: 10px;
+}

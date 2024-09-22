@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="doctor.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Toggle Buttons for Doctor and Patient -->
+        <div class="toggle-buttons">
+            <button id="patientToggle" class="toggle">Patient</button>
+            <button id="doctorToggle" class="toggle active">Doctor</button>
+        </div>
+
+        <!-- Doctor Login Form -->
+        <div class="form-section">
+            <h2><i class="fas fa-sign-in-alt login-doctor-heading"></i> Doctor</h2>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button id="sendOtp"><i class="fas fa-paper-plane"></i> Send OTP</button>
+
+            <!-- OTP Section (Hidden initially) -->
+            <div class="form-group" id="otpSection" style="display: none;">
+                <label for="otp"><i class="fas fa-key"></i> OTP:</label>
+                <input type="text" id="otp" placeholder="Enter the OTP">
+                <button id="verifyOtp" onclick="redirectToPage()"><i class="fas fa-check"></i> Verify OTP and Continue</button>
+            </div>
+
+            <!-- Sign-up link -->
+            <div class="sign-up">
+                <a href="/project/public/health.html">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for OTP functionality and Toggle -->
+    <script>
+        const patientToggle = document.getElementById('patientToggle');
+        const doctorToggle = document.getElementById('doctorToggle');
+
+        // Redirect to Patient login page on toggle
+        patientToggle.addEventListener('click', () => {
+            window.location.href = '/project/public/Login Page/Patient/patient.html';
+        });
+
+        // OTP handling for Doctor login
+        document.getElementById('sendOtp').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            fetch('http://localhost:3000/send-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('otpSection').style.display = 'block';
+                } else {
+                    alert('Error sending OTP');
+                }
+            });
+        });
+
+        document.getElementById('verifyOtp').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp').value;
+            fetch('http://localhost:3000/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, otp })
+            }).then(response => {
+                if (response.ok) {
+                    alert('OTP Verified');
+                    redirectToPage();
+                } else {
+                    alert('Invalid OTP');
+                }
+            });
+        });
+
+        // Function to redirect after OTP verification
+        function redirectToPage() {
+            window.location.href = '/project/public/Dashboard/Doctor/doctor.html';
+        }
+    </script>
+
+    <!-- Add your existing scripts below -->
+    <script src="server.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="patient.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Toggle Buttons for Doctor and Patient -->
+        <div class="toggle-buttons">
+            <button id="patientToggle" class="toggle active">Patient</button>
+            <button id="doctorToggle" class="toggle">Doctor</button>
+        </div>
+
+        <!-- Patient Login Form -->
+        <div class="form-section">
+            <h2><i class="fas fa-sign-in-alt login-patient-heading"></i> Patient</h2>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                <input type="email" id="email" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password"><i class="fas fa-lock"></i> Password:</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button id="sendOtp"><i class="fas fa-paper-plane"></i> Send OTP</button>
+
+            <!-- OTP Section (Hidden initially) -->
+            <div class="form-group" id="otpSection" style="display: none;">
+                <label for="otp"><i class="fas fa-key"></i> OTP:</label>
+                <input type="text" id="otp" placeholder="Enter the OTP">
+                <button id="verifyOtp" onclick="redirectToPage()"><i class="fas fa-check"></i> Verify OTP and Continue</button>
+            </div>
+
+            <!-- Sign-up link -->
+            <div class="sign-up">
+                <a href="/project/public/health.html">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to toggle between Patient and Doctor -->
+    <script>
+        const doctorToggle = document.getElementById('doctorToggle');
+        const patientToggle = document.getElementById('patientToggle');
+
+        // Redirect to Doctor login page on toggle
+        doctorToggle.addEventListener('click', () => {
+            window.location.href = '/project/public/Login Page/Doctor/doctor.html';
+        });
+
+        // Function to redirect after OTP verification for Patient
+        function redirectToPage() {
+            window.location.href = '/project/public/health.html';
+        }
+    </script>
+
+    <!-- Add your existing OTP send and verify scripts below -->
+    <script src="server.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
