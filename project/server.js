@@ -1,52 +1,36 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
+const routes = require('./routes');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+dotenv.config()
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const otpStore = {};
+//mongoDB Atlas
+console.log(process.env.MONGODB_URI);
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'ravikiran1652238@gmail.com', // replace with your email
-        pass: 'qamwdiuzlersrpjo' // replace with your app password
-    }
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.once("open", () => {
+    console.log("connected to database");
 });
 
-app.post('/send-otp', (req, res) => {
-    const email = req.body.email;
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    otpStore[email] = otp;
 
-    const mailOptions = {
-        from: 'your-email@gmail.com', // replace with your email
-        to: email,
-        subject: 'Your OTP Code',
-        text: `Thankyou for choosing AccureHealth, \n Please enter the provided otp. \n if it's not you ignore ${otp}`
-    };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return res.status(500).send('Error sending OTP');
-        }
-        res.status(200).send('OTP sent');
-    });
-});
+app.use("/", routes);
 
-app.post('/verify-otp', (req, res) => {
-    const email = req.body.email;
-    const otp = req.body.otp;
-
-    if (otpStore[email] && otpStore[email] === otp) {
-        delete otpStore[email];
-        res.status(200).send('OTP Verified');
-    } else {
-        res.status(400).send('Invalid OTP');
+app.use((req, res, next) => {
+    res.set("Access-Control-Allow-Origin", "*");
+    res.set("Access-Control-Allow-Headers", "*");
+    res.set("Access-Control-Allow-Methods", "*");
+    if (req.method === "OPTIONS") {
+        res.status(200).end();
+        return;
     }
+    next();
 });
 
 const PORT = process.env.PORT || 3000;
