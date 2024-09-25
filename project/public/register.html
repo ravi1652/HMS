@@ -1,779 +1,210 @@
 <style>
     .registration-container {
-      background-color: #dfdada;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      align-items: center;
-      padding: 120px 80px 0;
+        background-color: #dfdada;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100vw;
     }
-    
-    @media (max-width: 991px) {
-      .registration-container {
-        padding: 100px 20px 0;
-      }
-    }
-    
+
     .form-wrapper {
-      background-color: #fffcfc;
-      display: flex;
-      width: 952px;
-      max-width: 100%;
-      flex-direction: column;
-      padding: 16px 6px 1px 0;
-    }
-    
-    .header-section {
-      align-self: flex-end;
-      display: flex;
-      width: 719px;
-      max-width: 100%;
-      align-items: flex-start;
-      gap: 20px;
-      font-family: Inter, sans-serif;
-      color: #000;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    
-    @media (max-width: 991px) {
-      .header-section {
-        margin-right: 4px;
-      }
-    }
-    
-    .title-wrapper {
-      align-self: flex-end;
-      display: flex;
-      margin-top: 40px;
-      flex-direction: column;
-    }
-    
-    @media (max-width: 991px) {
-      .title-wrapper {
-        max-width: 100%;
-      }
-    }
-    
-    .main-title {
-      font-size: 43px;
-      font-weight: 700;
-    }
-    
-    @media (max-width: 991px) {
-      .main-title {
-        max-width: 100%;
-      }
-    }
-    
-    .subtitle {
-      font-size: 30px;
-      font-weight: 400;
-      align-self: center;
-      margin-top: 14px;
-    }
-    
-    .header-image {
-      aspect-ratio: 1.16;
-      object-fit: contain;
-      object-position: center;
-      width: 64px;
-      align-self: flex-start;
-    }
-    
-    .divider {
-      margin-top: 31px;
-      height: 1px;
-      border: 1px solid #cbc1c1;
-    }
-    
-    @media (max-width: 991px) {
-      .divider {
-        max-width: 100%;
-      }
-    }
-    
-    .form-content {
-      display: flex;
-      width: 779px;
-      max-width: 100%;
-      flex-direction: column;
-      margin: 53px 0 0 51px;
-    }
-    
-    @media (max-width: 991px) {
-      .form-content {
-        margin-top: 40px;
-      }
-    }
-    
-    .form-row {
-      width: 597px;
-      max-width: 100%;
-    }
-    
-    .form-columns {
-      gap: 20px;
-      display: flex;
-    }
-    
-    @media (max-width: 991px) {
-      .form-columns {
+        background-color: #fffcfc;
+        display: flex;
         flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-    }
-    
-    .label-column {
-      display: flex;
-      flex-direction: column;
-      line-height: normal;
-      width: 16%;
-      margin-left: 0;
-    }
-    
-    @media (max-width: 991px) {
-      .label-column {
+        align-items: center;
         width: 100%;
-      }
+        height: 100%;
+        margin: 5rem;
+        padding: 5rem 10rem;
+        position: relative;
     }
-    
-    .label-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-self: stretch;
-      align-items: flex-start;
-      color: #000;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 700 20px Inter, sans-serif;
+
+    .close-image{
+        position: absolute;
+        right: 2rem;
+        top: 2rem;
+        width: 3rem;
     }
-    
-    @media (max-width: 991px) {
-      .label-wrapper {
-        margin-top: 40px;
-        white-space: initial;
-      }
+
+    .header-main{
+        font-size: 3rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 800;
+        margin-bottom: 3rem;
     }
-    
-    .email-label {
-      margin-top: 61px;
+    .header-sub{
+        font-size: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-bottom: 5rem;
     }
-    
-    @media (max-width: 991px) {
-      .email-label {
-        margin-top: 40px;
-      }
-    }
-    
-    .gender-label {
-      align-self: stretch;
-      margin-top: 63px;
-    }
-    
-    @media (max-width: 991px) {
-      .gender-label {
-        margin-top: 40px;
-      }
-    }
-    
-    .input-column {
-      display: flex;
-      flex-direction: column;
-      line-height: normal;
-      width: 84%;
-      margin-left: 20px;
-    }
-    
-    @media (max-width: 991px) {
-      .input-column {
+
+    .form-content{
+        display: flex;
+        gap: 1.5rem;
+        flex-direction: column;
         width: 100%;
-      }
     }
-    
-    .input-wrapper {
-      display: flex;
-      width: 100%;
-      flex-direction: column;
-      align-items: flex-start;
+
+    .form-line{
+        display: flex;
+        gap:2rem;
     }
-    
-    @media (max-width: 991px) {
-      .input-wrapper {
-        max-width: 100%;
-        margin-top: 40px;
-      }
+
+    .line-label{
+        font-size: 1.5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        width: 30%;
     }
-    
-    .name-inputs {
-      align-self: stretch;
-      display: flex;
-      gap: 40px 47px;
-    }
-    
-    @media (max-width: 991px) {
-      .name-inputs {
-        max-width: 100%;
-      }
-    }
-    
-    .first-name-wrapper,
-    .last-name-wrapper {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    
-    .input-field {
-      border-radius: 4px;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #c0bebe;
-    }
-    
+
     .input-box {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      height: 40px;
-      border: 1px solid #b0abab;
+        padding: 10px 16px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        font-size: 16px;
     }
-    
-    .input-label {
-      color: #6b6767;
-      align-self: flex-start;
-      margin-top: 4px;
-      font: 700 15px Inter, sans-serif;
-    }
-    
-    .email-input {
-      border-radius: 4px;
-      display: flex;
-      margin-top: 27px;
-      width: 372px;
-      max-width: 100%;
-      flex-direction: column;
-      border: 1px solid #c0bebe;
-    }
-    
-    .email-placeholder {
-      color: #6b6767;
-      margin-top: 9px;
-      font: 700 15px Inter, sans-serif;
-    }
-    
-    .gender-select {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      margin-top: 21px;
-      width: 189px;
-      max-width: 100%;
-      align-items: flex-start;
-      gap: 20px;
-      color: #000;
-      white-space: nowrap;
-      justify-content: space-between;
-      padding: 6px 4px 6px 9px;
-      font: 400 20px Inter, sans-serif;
-      border: 1px solid #b0abab;
-    }
-    
-    @media (max-width: 991px) {
-      .gender-select {
-        white-space: initial;
-      }
-    }
-    
-    .select-icon {
-      aspect-ratio: 1.21;
-      object-fit: contain;
-      object-position: center;
-      width: 34px;
-    }
-    
-    .dob-section {
-      display: flex;
-      margin-top: 36px;
-      width: 100%;
-      gap: 18px;
-      color: #000;
-      font: 400 20px Inter, sans-serif;
-    }
-    
-    @media (max-width: 991px) {
-      .dob-section {
-        max-width: 100%;
-        margin-right: 2px;
-      }
-    }
-    
-    .dob-label {
-      font-weight: 700;
-      flex-grow: 1;
-      margin: auto 0;
-    }
-    
-    .date-select,
-    .month-select,
-    .year-select {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      align-items: flex-start;
-      gap: 40px;
-      white-space: nowrap;
-      padding: 6px 4px 6px 9px;
-      border: 1px solid #b0abab;
-    }
-    
-    @media (max-width: 991px) {
-      .date-select,
-      .month-select,
-      .year-select {
-        white-space: initial;
-      }
-    }
-    
-    .select-icon {
-      aspect-ratio: 1.21;
-      object-fit: contain;
-      object-position: center;
-      width: 34px;
-    }
-    
-    .phone-section {
-      display: flex;
-      margin-top: 45px;
-      width: 436px;
-      max-width: 100%;
-      gap: 40px 86px;
-      font-family: Inter, sans-serif;
-      font-weight: 700;
-    }
-    
-    @media (max-width: 991px) {
-      .phone-section {
-        margin-top: 40px;
-      }
-    }
-    
-    .phone-label {
-      color: #000;
-      font-size: 20px;
-      align-self: flex-start;
-    }
-    
-    .phone-input-wrapper {
-      display: flex;
-      flex-direction: column;
-      font-size: 15px;
-      white-space: nowrap;
-      flex-grow: 1;
-      flex-basis: 0;
-      width: fit-content;
-    }
-    
-    @media (max-width: 991px) {
-      .phone-input-wrapper {
-        white-space: initial;
-      }
-    }
-    
-    .phone-inputs {
-      display: flex;
-      color: #000;
-    }
-    
-    @media (max-width: 991px) {
-      .phone-inputs {
-        white-space: initial;
-      }
-    }
-    
-    .country-code {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      width: 53px;
-      height: 40px;
-      border: 1px solid #b0abab;
-    }
-    
-    .phone-number {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      width: 209px;
-      height: 40px;
-      border: 1px solid #b0abab;
-    }
-    
-    .phone-labels {
-      align-self: flex-start;
-      display: flex;
-      margin-top: 7px;
-      gap: 15px;
-      color: #6b6767;
-    }
-    
-    @media (max-width: 991px) {
-      .phone-labels {
-        margin-left: 8px;
-        white-space: initial;
-      }
-    }
-    
-    .address-section {
-      display: flex;
-      margin-top: 29px;
-      gap: 40px 75px;
-      font-family: Inter, sans-serif;
-      font-weight: 700;
-      flex-wrap: wrap;
-    }
-    
-    @media (max-width: 991px) {
-      .address-section {
-        max-width: 100%;
-      }
-    }
-    
-    .address-label {
-      color: #000;
-      font-size: 20px;
-      align-self: flex-start;
-      flex-grow: 1;
-    }
-    
-    .address-inputs {
-      display: flex;
-      flex-direction: column;
-      font-size: 15px;
-      color: #6b6767;
-      flex-grow: 1;
-      flex-basis: 0;
-      width: fit-content;
-    }
-    
-    @media (max-width: 991px) {
-      .address-inputs {
-        max-width: 100%;
-      }
-    }
-    
-    .address-input {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      width: 605px;
-      max-width: 100%;
-      height: 40px;
-      border: 1px solid #b0abab;
-    }
-    
-    @media (max-width: 991px) {
-      .address-input {
-        margin-right: 2px;
-      }
-    }
-    
-    .address-label {
-      align-self: flex-start;
-      margin-top: 7px;
-    }
-    
-    .address-details {
-      display: flex;
-      margin-top: 20px;
-      align-items: flex-start;
-      gap: 20px;
-      white-space: nowrap;
-      flex-wrap: wrap;
-    }
-    
-    @media (max-width: 991px) {
-      .address-details {
-        max-width: 100%;
-        white-space: initial;
-      }
-    }
-    
-    .city-wrapper,
-    .state-wrapper,
-    .country-wrapper {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-    
-    @media (max-width: 991px) {
-      .city-wrapper,
-      .state-wrapper,
-      .country-wrapper {
-        white-space: initial;
-      }
-    }
-    
-    .city-input,
-    .state-input,
-    .country-input {
-      border-radius: 4px;
-      background-color: #fff;
-      display: flex;
-      width: 189px;
-      height: 40px;
-      border: 1px solid #b0abab;
-    }
-    
-    .city-label,
-    .state-label,
-    .country-label {
-      align-self: flex-start;
-      margin-top: 4px;
-    }
-    
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-    /* Centering the Submit button */
-.submit-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Adjust this as needed */
-}
 
-/* Style the button if needed */
-.submit-container button {
-    padding: 10px 20px;
-    background-color: #f99f84; /* Adjust the background color */
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-}
+    .medium-box{
+        width: 15rem;
+    }
 
-.submit-container button:hover {
-    background-color: #f2886b; /* Darker shade on hover */
-}
+    .long1-box {
+        width: 20rem;
+    }
+    .long2-box {
+        width: 25rem;
+    }
 
-    </style>
-    
-    <section class="registration-container">
-      <div class="form-wrapper">
-        <header class="header-section">
-          <div class="title-wrapper">
-            <h1 class="main-title">New Patient Registration</h1>
-            <p class="subtitle">Please fill in the form below</p>
-          </div>
-         <a href="health.html"> <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e10c463746a793f3886bf14deeb3669a838494f7e8b56dbf34eae63f6b39e637?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" class="header-image" alt="" /></a>
-        </header>
-        <hr class="divider" />
-        <form class="form-content">
-          <div class="form-row">
-            <div class="form-columns">
-              <div class="label-column">
-                <div class="label-wrapper">
-                  <label for="firstName">Name:</label>
-                  <label for="email" class="email-label">E-mail:</label>
-                  <label for="gender" class="gender-label">Gender:</label>
-                </div>
-              </div>
-              <div class="input-column">
-                <div class="input-wrapper">
-                  <div class="name-inputs">
-                    <div class="first-name-wrapper">
-                      <div class="input-field">
-                        <input type="text" id="firstName" class="input-box" aria-label="First Name" />
-                      </div>
-                      <label for="firstName" class="input-label">First Name</label>
-                    </div><br>
-                    <div class="last-name-wrapper">
-                      <div class="input-field">
-                        <input type="text" id="lastName" class="input-box" aria-label="Last Name" />
-                      </div>
-                      <label for="lastName" class="input-label">Last Name</label>
-                    </div>
-                  </div>
-                  <div class="email-input">
-                    <input type="email" id="email" class="input-box" aria-label="Email" placeholder="Ex: myname@example.com" />
-                  </div>
-                  <label for="email" class="email-placeholder">Ex: myname@example.com</label>
-                  <select id="gender" class="gender-select" aria-label="Select Gender">
+    .warning-text {
+        color: red;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        margin-top: 1rem;
+    }
+    .submitBtn{
+        padding: 0.75rem 5rem;
+        background: #2196f3;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.5rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 500;
+        color: white;
+        width: fit-content;
+    }
+</style>
+
+<section class="registration-container">
+    <div class="form-wrapper">
+        <a href="health.html"> <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e10c463746a793f3886bf14deeb3669a838494f7e8b56dbf34eae63f6b39e637?placeholderIfAbsent=true&apiKey=4f72bb9bb15a45e7a2090cd9fe10537a" class="close-image" alt="" /></a>
+        <div class="header-main">New Patient Registration</div>
+        <div class="header-sub">Please fill in the form below</div>
+        <form class="form-content" id="patient-register-form">
+            <div class="form-line">
+                <div class="line-label">Name - </div>
+                <input required type="text" id="firstName" name="firstName" class="input-box" placeholder="First Name" />
+                <input required type="text" id="lastName" name="lastName" class="input-box" placeholder="Last Name" />
+            </div>
+            <div class="form-line">
+                <div class="line-label">Email - </div>
+                <input required type="email" id="email" class="input-box long1-box" name="email" placeholder="example@email.com" />
+            </div>
+            <div class="form-line">
+                <div class="line-label">Gender - </div>
+                <select id="gender" name="gender" class="input-box medium-box" aria-label="Select Gender">
                     <option value="">Select</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-              </div>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
             </div>
-          </div>
-          <div class="dob-section">
-            <label for="dob" class="dob-label">Date Of Birth:</label>
-            <select id="dobDate" class="date-select" aria-label="Select Date">
-              <option value="">Date</option>
-              <option value="">01</option>
-              <option value="">02</option>
-              <option value="">03</option>
-              <option value="">04</option>
-              <option value="">05</option>
-              <option value="">06</option>
-              <option value="">07</option>
-              <option value="">08</option>
-              <option value="">09</option>
-              <option value="">10</option>
-              <option value="">11</option>
-              <option value="">12</option>
-              <option value="">13</option>
-              <option value="">14</option>
-              <option value="">15</option>
-              <option value="">16</option>
-              <option value="">17</option>
-              <option value="">18</option>
-              <option value="">19</option>
-              <option value="">20</option>
-              <option value="">21</option>
-              <option value="">22</option>
-              <option value="">23</option>
-              <option value="">24</option>
-              <option value="">25</option>
-              <option value="">26</option>
-              <option value="">27</option>
-              <option value="">28</option>
-              <option value="">29</option>
-              <option value="">30</option>
-              <option value="">31</option>
-
-              <!-- Add date options here -->
-            </select>
-            <select id="dobMonth" class="month-select" aria-label="Select Month">
-              <option value="">Month</option>
-              <option value="">January</option>
-              <option value="">February</option>
-              <option value="">March</option>
-              <option value="">April</option>
-              <option value="">June</option>
-              <option value="">July</option>
-              <option value="">August</option>
-              <option value="">September</option>
-              <option value="">October</option>
-              <option value="">Novemeber</option>
-              <option value="">December</option>
-              <!-- Add month options here -->
-            </select>
-            <select id="dobYear" class="year-select" aria-label="Select Year">
-              <option value="">Year</option>
-              <option value="1970">1970</option>
-            <option value="1971">1971</option>
-            <option value="1972">1972</option>
-            <option value="1973">1973</option>
-            <option value="1974">1974</option>
-            <option value="1975">1975</option>
-            <option value="1976">1976</option>
-            <option value="1977">1977</option>
-            <option value="1978">1978</option>
-            <option value="1979">1979</option>
-            <option value="1980">1980</option>
-            <option value="1981">1981</option>
-            <option value="1982">1982</option>
-            <option value="1983">1983</option>
-            <option value="1984">1984</option>
-            <option value="1985">1985</option>
-            <option value="1986">1986</option>
-            <option value="1987">1987</option>
-            <option value="1988">1988</option>
-            <option value="1989">1989</option>
-            <option value="1990">1990</option>
-            <option value="1991">1991</option>
-            <option value="1992">1992</option>
-            <option value="1993">1993</option>
-            <option value="1994">1994</option>
-            <option value="1995">1995</option>
-            <option value="1996">1996</option>
-            <option value="1997">1997</option>
-            <option value="1998">1998</option>
-            <option value="1999">1999</option>
-            <option value="2000">2000</option>
-            <option value="2001">2001</option>
-            <option value="2002">2002</option>
-            <option value="2003">2003</option>
-            <option value="2004">2004</option>
-            <option value="2005">2005</option>
-            <option value="2006">2006</option>
-            <option value="2007">2007</option>
-            <option value="2008">2008</option>
-            <option value="2009">2009</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2023">2023</option>
-            <option value="2024">2024</option>
-             
-              <!-- Add year options here -->
-            </select>
-          </div>
-          <div class="phone-section">
-            <label for="phoneCode" class="phone-label">Ph. num</label>
-            <div class="phone-input-wrapper">
-              <div class="phone-inputs">
-                <input type="text" id="phoneCode" class="country-code" aria-label="Country Code" />
-                <span aria-hidden="true">-</span>
-                <input type="tel" id="phoneNumber" class="phone-number" aria-label="Phone Number" />
-              </div>
-              <div class="phone-labels">
-                <label for="phoneCode">Code</label>
-                <label for="phoneNumber">Number</label>
-              </div>
+            <div class="form-line">
+                <div class="line-label">Date of Birth - </div>
+                <input required type="date" name="dob" id="dob" class="input-box">
             </div>
-          </div>
-          <div class="address-section">
-            <label for="streetAddress" class="address-label">Address:</label>
-            <div class="address-inputs">
-              <input type="text" id="streetAddress" class="address-input" aria-label="Street Address" />
-              <label for="streetAddress" class="address-label">Street Address</label>
-              <input type="text" id="streetAddress2" class="address-input" aria-label="Street Address Line 2" />
-              <label for="streetAddress2" class="address-label">Street Address Line 2</label>
-              <div class="address-details">
-                <div class="city-wrapper">
-                  <input type="text" id="city" class="city-input" aria-label="City" />
-                  <label for="city" class="city-label">City</label>
-                </div>
-                <div class="state-wrapper">
-                  <input type="text" id="state" class="state-input" aria-label="State" />
-                  <label for="state" class="state-label">State</label>
-                </div>
-                <div class="country-wrapper">
-                  <input type="text" id="country" class="country-input" aria-label="Country" />
-                  <label for="country" class="country-label">Country</label>
-                </div>
-              </div>
+            <div class="form-line">
+                <div class="line-label">Ph. Number - </div>
+                <input required type="text" id="phone" class="input-box long1-box" placeholder="Enter Phone Number" />
             </div>
-          </div>
-          <hr><hr><hr>
-          <div class="submit-container">
-            <button type="submit">Submit</button>
-        </div>
+            <div class="form-line">
+                <div class="line-label">Address Line 1 - </div>
+                <input required type="text" id="address1" class="input-box long2-box" name="address1" placeholder="Flat no, Soc,Locality" />
+            </div>
+            <div class="form-line">
+                <div class="line-label">Address Line 2 - </div>
+                <input required type="text" id="address2" class="input-box long2-box" name="address2" placeholder="City, State, Country" />
+            </div>
+            <div class="form-line">
+                <div class="line-label">Line 3 (optional) - </div>
+                <input type="text" id="address3" class="input-box long2-box" name="address3" placeholder="Landmark (optional)" />
+            </div>
+            <div class="form-line">
+                <div class="line-label">Password - </div>
+                <input required type="password" name="password" id="password" class="input-box long1-box" placeholder="Enter Password">
+            </div>
+            <div class="warning-text"></div>
+            <button class="submitBtn" type="submit">Submit</button>
         </form>
-      </div>
-    </section>
+    </div>
+</section>
+
+<script>
+    const registerPatient = (data) => {
+        console.log(data);
+        fetch("http://localhost:3000/patient/register", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                return res.json().then((body) => {
+                    throw new Error(body.message)
+                })
+            })
+            .then((res)=>console.log(res))
+            .catch((err) => {
+                document.querySelector(".warning-text").innerHTML = err.message;
+            });
+    };
+
+    const form = document.querySelector("#patient-register-form");
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const inputsAll = form.querySelectorAll("input");
+        const selectAll = form.querySelectorAll("select");
+        for (let i = 0; i < inputsAll.length; i++) {
+            if(inputsAll[i].name='address3'){
+                continue;
+            }
+            if (inputsAll[i].value === "" || inputsAll[i].value === null || inputsAll[i].value === undefined) {
+                document.querySelector(".warning-text").innerHTML = "Please Fill all the fields";
+                return;
+            }
+        }
+        for (let i = 0; i < selectAll.length; i++) {
+            if (selectAll[i].value === "" || selectAll[i].value === null || selectAll[i].value === undefined) {
+                document.querySelector(".warning-text").innerHTML = "Please Fill all the fields";
+                return;
+            }
+        }
+        document.querySelector(".warning-text").innerHTML = "";
+        const dataBody = {
+            name: `${form["firstName"].value} ${form["lastName"].value}`,
+            email: form["email"].value,
+            password: form["password"].value,
+            address: `${form["address1"].value}, ${form["address2"].value}${form["address3"].value!=='' ? ", "+form["address3"].value : ""}`,
+            dob: form["dob"].value,
+            phone: form["phone"].value,
+            gender: form["gender"].value,
+        };
+
+        registerPatient(dataBody);
+    });
+</script>
