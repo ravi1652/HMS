@@ -37,24 +37,61 @@
 
             <!-- Sign-up link -->
             <div class="sign-up">
-                <a href="/project/public/health.html">Sign up</a>
+                <a href="/project/public/register.html">Sign up</a>
             </div>
         </div>
     </div>
 
     <!-- JavaScript to toggle between Patient and Doctor -->
     <script>
-        const doctorToggle = document.getElementById('doctorToggle');
         const patientToggle = document.getElementById('patientToggle');
+        const doctorToggle = document.getElementById('doctorToggle');
 
-        // Redirect to Doctor login page on toggle
-        doctorToggle.addEventListener('click', () => {
-            window.location.href = '/project/public/Login Page/Doctor/doctor.html';
+        // Redirect to Patient login page on toggle
+        patientToggle.addEventListener('click', () => {
+            window.location.href = '/project/public/Login Page/Patient/patient.html';
         });
 
-        // Function to redirect after OTP verification for Patient
+        // OTP handling for Doctor login
+        document.getElementById('sendOtp').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            fetch('http://localhost:3000/send-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            }).then(response => {
+                if (response.ok) {
+                    document.getElementById('otpSection').style.display = 'block';
+                } else {
+                    alert('Error sending OTP');
+                }
+            });
+        });
+
+        document.getElementById('verifyOtp').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp').value;
+            fetch('http://localhost:3000/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, otp })
+            }).then(response => {
+                if (response.ok) {
+                    alert('OTP Verified');
+                    redirectToPage();
+                } else {
+                    alert('Invalid OTP');
+                }
+            });
+        });
+
+        // Function to redirect after OTP verification
         function redirectToPage() {
-            window.location.href = '/project/public/health.html';
+            window.location.href = '/project/public/Dashboard/Doctor/doctor.html';
         }
     </script>
 

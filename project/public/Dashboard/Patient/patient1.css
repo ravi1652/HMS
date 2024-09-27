@@ -5,22 +5,36 @@ body, html {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     height: 100%;
+    overflow-x: hidden;
 }
 
 .container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar {
-    width: 250px;
-    background-color: #ffffff;
-    display: flex;
+    width: 220px;
+    background: hsla(195, 94%, 49%, 1);
+
+    background: linear-gradient(90deg, hsla(195, 94%, 49%, 1) 0%, hsla(187, 83%, 55%, 1) 50%, hsla(274, 96%, 68%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(195, 94%, 49%, 1) 0%, hsla(187, 83%, 55%, 1) 50%, hsla(274, 96%, 68%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(195, 94%, 49%, 1) 0%, hsla(187, 83%, 55%, 1) 50%, hsla(274, 96%, 68%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08B7F1", endColorstr="#2DD6EC", GradientType=1 );    display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1;
+    overflow-y: auto;
 }
 
 .sidebar-top {
@@ -40,25 +54,37 @@ body, html {
 .sidebar-nav ul {
     list-style-type: none;
     padding: 0;
+    margin-bottom: 50px;
+   
 }
 
 .sidebar-nav li {
     margin-bottom: 20px;
+    color: white;
 }
 
 .sidebar-nav a {
     text-decoration: none;
-    color: #333;
     font-size: 18px;
     display: flex;
     align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* General hover for all sidebar links */
+.sidebar-nav a:hover {
+    color: #ffffff !important; /* Force text color to white */
+    background-color: #007bff !important; /* Ensure background color changes */
 }
 
 .sidebar-nav a img {
-    width: 24px;
+    width: 26px;
     height: 24px;
     margin-right: 10px;
 }
+
 
 .sidebar-nav a:hover {
     color: #007bff;
@@ -66,9 +92,48 @@ body, html {
 
 .content {
     flex-grow: 1;
-    background-color: #ffffff;
+    background: rgb(178,9,237);
+background: linear-gradient(90deg, rgba(178,9,237,1) 0%, rgba(139,27,215,1) 4%, rgba(184,40,208,1) 19%, rgba(0,212,255,1) 100%);
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-left: 300px !important; /* Shift content to the right by the width of the sidebar */
+    min-height: 100vh; /* Ensure content takes full viewport height */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    overflow-y: auto; /* Allow scrolling when content overflows */
+}
+
+.content h1 {
+    margin: 20px !important;
+}
+
+.content h3 {
+    font-style: italic;
+}
+
+/* Add this to patient1.css for form styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+form input[type="number"] {
+    padding: 5px;
+    font-size: 16px;
+    width: 100px;
+    margin-right: 10px;
+}
+
+form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #0056b3;
 }

@@ -3,34 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Layout</title>
+    <title>Patient Dashboard</title>
     <link rel="stylesheet" href="patient1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js CDN -->
 </head>
 <body>
     <div class="container">
         <aside class="sidebar">
             <div class="sidebar-top">
                 <div class="logo">
-                    <!-- Add your logo or any other content here -->
-                     <img src="https://png.pngtree.com/png-vector/20240205/ourlarge/pngtree-doctor-symbol-color-png-image_11614936.png"/><br><br>
-                   Ravi
+                    <img src="https://png.pngtree.com/png-vector/20240205/ourlarge/pngtree-doctor-symbol-color-png-image_11614936.png"/><br><br>
+                    Ravi
                 </div>
             </div>
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="#"><img src="/project/images/dashboard.png" alt="Dashboard"> Dashboard</a></li>
-                    <li><a href="health.html"><img src="/project/images/patient.png" alt="Patients"> Doctors</a></li>
-                    <li><a href="https://calendar.google.com/calendar/u/0/r"><img src="/project/images/calender.png" alt="Calendar"> Calendar</a></li>
-                    <li><a href="https://mail.google.com/mail/u/0/#inbox"><img src="/project/images/mail.png" alt="mail"> Mails</a></li>
-                    <!-- <li><a href="#"><img src="settings-icon.png" alt="Settings"> Settings</a></li>
-                    <li><a href="#"><img src="support-icon.png" alt="Support"> Support</a></li> -->
+                    <li class="dashboard-img">
+                        <a href="#">
+                            <img src="/project/images/dashboard.png" alt="Dashboard"> Dashboard
+                        </a>
+                        </li>
+                    <li class="doctor-img"><a href="health.html"><img src="/project/images/patient.png" alt="Patients"> Doctors</a></li>
+                    <li class="calendar-img"><a href="https://calendar.google.com/calendar/u/0/r"><img src="/project/images/calender.png" alt="Calendar"> Calendar</a></li>
+                    <li class="mail-img"><a href="https://mail.google.com/mail/u/0/#inbox"><img src="/project/images/mail.png" alt="mail"> Mails</a></li>
                 </ul>
             </nav>
         </aside>
         <main class="content">
-            <!-- Main content goes here -->
-            Content Area
+            <div class="dashboard-main">
+            <h1>Hi Ravi!</h1>
+            <h3>Lets check your mental wellness!!! 😀</h3>
+            
+            <!-- Form to collect stress level, heart rate, and sleep hours -->
+            <form id="healthForm">
+                <div class="form-group">
+                    <label for="stressLevel">Stress Level (1-10) :</label>
+                    <input type="number" id="stressLevel" name="stressLevel" min="1" max="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="sleepHours">Sleep Hours (hrs) &nbsp; :</label>
+                    <input type="number" id="sleepHours" name="sleepHours" required>
+                </div>
+                <div class="form-group">
+                    <label for="heartRate">Heart Rate (BPM) &nbsp; :</label>
+                    <input type="number" id="heartRate" name="heartRate" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+
+            <!-- Area to display health condition -->
+            <p><strong>Health Condition:</strong> <span id="healthCondition"></span></p>
+
+            <!-- Canvas element for Chart.js -->
+            <canvas id="healthChart" width="300" height="100"></canvas>
+        </div>
         </main>
     </div>
+
+    <script>
+        let healthChart; // Global variable to hold the chart
+
+        // Handle the form submission
+        document.getElementById('healthForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the page from refreshing
+
+            // Get the values from the form
+            const stressLevel = document.getElementById('stressLevel').value;
+            const sleepHours = document.getElementById('sleepHours').value;
+            const heartRate = document.getElementById('heartRate').value;
+
+            // Determine health condition based on input
+            let healthCondition = '';
+            if (stressLevel > 7 || heartRate > 100) {
+                healthCondition = 'High stress detected. Please consider relaxation techniques.';
+            } else if (sleepHours < 5) {
+                healthCondition = 'You need more sleep for better health.';
+            } else {
+                healthCondition = 'Your health metrics are within the normal range.';
+            }
+
+            // Update health condition display
+            document.getElementById('healthCondition').innerText = healthCondition;
+
+            // Get the context of the chart
+            const ctx = document.getElementById('healthChart').getContext('2d');
+
+            // If chart already exists, update the data instead of creating a new chart
+            if (healthChart) {
+                // Update chart data
+                healthChart.data.datasets[0].data = [stressLevel, sleepHours, heartRate];
+                healthChart.update(); // Update the chart with new data
+            } else {
+                // Create a new chart if it doesn't exist
+                healthChart = new Chart(ctx, {
+                    type: 'bar', // You can use 'line', 'bar', 'doughnut', etc.
+                    data: {
+                        labels: ['Stress Level', 'Sleep Hours', 'Heart Rate'],
+                        datasets: [{
+                            label: 'Health Metrics',
+                            data: [stressLevel, sleepHours, heartRate], // Input values from the form
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(75, 192, 192, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(75, 192, 192, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true // Start y-axis at zero
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
